@@ -1,11 +1,13 @@
 # Google Container Engine - demo
 
-This is really simple collection of Google Container engine demos for quick
+This is really simple collection of Google Container Engine demos for quick
 hands-on experiments on different concepts...
 Use as you want :)
 
 Before deploying any of the Pods, replace the Project Id placeholder with your
 own project id.
+
+MIT license
 
 ## Cluster
 gcloud beta container image describe
