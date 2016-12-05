@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: manconf-env-pod
+spec:
+  containers:
+  - name: test-container
+    image: gcr.io/google_containers/busybox
+    command: [ "/bin/sh", "-c", "env" ]
+    env:
+    - name: CFG_BGCOLOR
+      valueFrom:
+        configMapKeyRef:
+          name: manualconfig
+          key: bg.color
+    - name: CFG_JSON
+      valueFrom:
+        configMapKeyRef:
+          name: manualconfig
+          key: config.json
+  restartPolicy: Never

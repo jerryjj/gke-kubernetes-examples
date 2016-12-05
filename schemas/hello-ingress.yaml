@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-ingress
+  annotations:
+    kubernetes.io/ingress.allowHTTP: 'true'
+spec:
+  backend:
+    serviceName: hello-ing-service
+    servicePort: 80
+  rules:
+    -
+      http:
+        paths:
+          -
+            path: '/*'
+            backend:
+              serviceName: hello-ing-service
+              servicePort: 80

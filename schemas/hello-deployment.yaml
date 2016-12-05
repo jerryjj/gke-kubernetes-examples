@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: hello
+    spec:
+      containers:
+      - name: hello
+        image: eu.gcr.io/YOUR_PROJECT_ID/hello-node:v1
+        ports:
+        - name: http
+          containerPort: 8080

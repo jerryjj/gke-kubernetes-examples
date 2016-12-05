@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fileconf-pod
+spec:
+  containers:
+  - name: hello
+    image: eu.gcr.io/YOUR_PROJECT_ID/hello-node:v1
+    env:
+    - name: CFG_JSON
+      valueFrom:
+        configMapKeyRef:
+          name: fileconfig
+          key: config.json
+    volumeMounts:
+      - name: configs
+        mountPath: /etc/fileconfig
+        readOnly: true
+  volumes:
+    - name: configs
+      configMap:
+        name: fileconfig
+  restartPolicy: Never

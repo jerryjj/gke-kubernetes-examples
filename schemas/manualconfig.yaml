@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: manualconfig
+data:
+  backend.properties: |
+    flags.feature1=true
+    flags.feature2=false
+  config.json: |
+    {"key": "value"}
+  bg.color: red
