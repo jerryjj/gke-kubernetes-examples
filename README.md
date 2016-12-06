@@ -10,9 +10,8 @@ own project id.
 MIT license
 
 ## Cluster
-gcloud beta container image describe
-gcloud container builds
 
+https://cloud.google.com/container-engine/docs/
 
 ```sh
 export PROJECT_ID=[REPLACE-WITH_OWN-PROJECT_ID]
@@ -27,6 +26,9 @@ export CLUSTER_CONTEXT=$(kubectl config view | awk '{print $2}' | grep "gkedemo"
 ```
 
 ## Container Registry and Container builder
+
+https://cloud.google.com/container-registry/docs/
+https://cloud.google.com/container-builder/docs/
 
 To build and upload locally run:
 
@@ -46,6 +48,8 @@ gcloud container builds describe [REPLACE-WITH-BUILD_ID]
 ```
 
 ## ConfigMaps
+
+http://kubernetes.io/docs/user-guide/configmap/
 
 Create Configs:
 
@@ -78,6 +82,8 @@ kubectl --context=$CLUSTER_CONTEXT delete pods/fileconf-pod
 
 ## Secrets
 
+http://kubernetes.io/docs/user-guide/secrets/
+
 Creating secrets:
 
 ```sh
@@ -103,6 +109,10 @@ kubectl --context=$CLUSTER_CONTEXT delete pods/secret-pod
 
 ## Deployments
 
+http://kubernetes.io/docs/user-guide/deployments/
+
+Create deployment and service for it
+
 ```sh
 kubectl --context=$CLUSTER_CONTEXT create -f schemas/hello-deployment.yaml
 kubectl --context=$CLUSTER_CONTEXT get deployments
@@ -118,7 +128,7 @@ Inspecting through proxy:
 kubectl --context=$CLUSTER_CONTEXT proxy
 ```
 
-Rolling update:
+Rolling update and rollback:
 
 ```sh
 kubectl --context $CLUSTER_CONTEXT set image deployment/hello-deployment hello=eu.gcr.io/$PROJECT_ID/hello-node:v2
@@ -136,6 +146,10 @@ kubectl --context $CLUSTER_CONTEXT rollout undo deployment/hello-deployment --to
 ```
 
 ## Ingress
+
+http://kubernetes.io/docs/user-guide/ingress/
+
+Create HTTP(S) Load Balancer
 
 ```sh
 kubectl --context=$CLUSTER_CONTEXT create -f schemas/hello-ing-service.yaml
